@@ -66,7 +66,7 @@ public class BackPacks extends JavaPlugin implements Listener {
     
         @EventHandler
         public void onPlayerJoin(PlayerJoinEvent e) {
-         Inventory inv = Bukkit.getServer().createInventory(e.getPlayer(), InventoryType.CHEST, "�a�lZaino");
+         Inventory inv = Bukkit.getServer().createInventory(e.getPlayer(), InventoryType.CHEST, "§a§lZaino");
                
          if (getConfig().contains("Player.BackPacks." + e.getPlayer().getName())) {
          for (String item : getConfig().getConfigurationSection("backpacks." + e.getPlayer().getName()).getKeys(false)) {
