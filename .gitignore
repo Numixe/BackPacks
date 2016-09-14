@@ -1,5 +1,4 @@
 /bin/
 *.jar
 *~
-.classpath
-.project
+.classhpath
