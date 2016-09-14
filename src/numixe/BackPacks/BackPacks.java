@@ -20,11 +20,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
  
 public class BackPacks extends JavaPlugin implements Listener {
+	
+	public static BackPacks plugin = null;
        
         private HashMap<String, Inventory> backpacks = new HashMap<String, Inventory>();
        
         
         public void onEnable() {
+        	plugin = this;
             Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
    
@@ -63,7 +66,7 @@ public class BackPacks extends JavaPlugin implements Listener {
     
         @EventHandler
         public void onPlayerJoin(PlayerJoinEvent e) {
-         Inventory inv = Bukkit.getServer().createInventory(e.getPlayer(), InventoryType.CHEST, "§a§lZaino");
+         Inventory inv = Bukkit.getServer().createInventory(e.getPlayer(), InventoryType.CHEST, "ï¿½aï¿½lZaino");
                
          if (getConfig().contains("Player.BackPacks." + e.getPlayer().getName())) {
          for (String item : getConfig().getConfigurationSection("backpacks." + e.getPlayer().getName()).getKeys(false)) {
