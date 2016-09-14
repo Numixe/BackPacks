@@ -1,15 +1,15 @@
-package numixe.QZar;
+package numixe.BackPacks;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class QZar {
+public class BackPacks {
 	
-	public static QZar plugin;
+	public static BackPacks plugin;
 	
 	public void onEnable() {
-		QZar.plugin = this;
+		BackPacks.plugin = this;
 		System.out.println("QZar Enabled!");
 	}
 	
@@ -24,7 +24,7 @@ public class QZar {
 			return true;
 		} else {		
 	    //Player p = (Player) sender;
-	    if (cmd.getName().equalsIgnoreCase("QZar")) {
+	    if (cmd.getName().equalsIgnoreCase("backpacks")) {
 	      
 	     }
 		}
