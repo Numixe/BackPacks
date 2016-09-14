@@ -1,0 +1,7 @@
+name: SexyFreeze
+version: 1.0
+Author: Numixe & GiantRaven
+main: numixe.BackPacks.BackPacks
+commands:
+        backpack:
+          description: Open Your Backpack
