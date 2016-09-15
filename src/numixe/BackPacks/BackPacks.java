@@ -21,6 +21,7 @@ public class BackPacks extends JavaPlugin implements Listener {
         	
     	plugin = this;
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
+        Bukkit.getServer().getPluginManager().registerEvents(new EventListener(), this);
     }
    
     public void onDisable() {
