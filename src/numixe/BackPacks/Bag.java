@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class Bag {
 	
@@ -23,7 +24,7 @@ public class Bag {
 
 	public Bag(Player player) {
 		
-		inventory = Bukkit.getServer().createInventory(player, InventoryType.CHEST, "Â§2Â§lZaino di " + player.getName());
+		inventory = Bukkit.getServer().createInventory(player, InventoryType.CHEST, "§2§lZaino di " + player.getName());
 		
 		if (!plugin.getConfig().contains("backpacks." + player.getName())) {
 			
@@ -92,5 +93,14 @@ public class Bag {
 	public static Bag getBag(Player player) {	// get the bag relative to a player
 		
 		return data.get(player.getName());
+	}
+	
+	public static void getPack(Player p) {
+		ItemStack bag = new ItemStack(Material.LEATHER);
+		ItemMeta meta = bag.getItemMeta();
+        meta.setDisplayName("§2§lZaino");
+		bag.setItemMeta(meta);
+		
+		p.getInventory().addItem(bag);
 	}
 }

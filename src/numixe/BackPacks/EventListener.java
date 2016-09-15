@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class EventListener implements Listener {
 	
@@ -33,7 +34,6 @@ public class EventListener implements Listener {
 			ItemStack item = event.getItem();
 			
 			if (item.equals(BACKPACK)) {
-				
 				Bag.getBag(event.getPlayer()).open();
 			}
 		}
@@ -42,9 +42,12 @@ public class EventListener implements Listener {
 	public static ItemStack genBackPack() {
 		
 		ItemStack bag = new ItemStack(Material.LEATHER);
+		ItemMeta meta = bag.getItemMeta();
+        meta.setDisplayName("§2§lZaino");
+		bag.setItemMeta(meta);
 		
 		// configure backpack item here
 		
 		return bag;
 	}
-}
+} 

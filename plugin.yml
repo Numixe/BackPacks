@@ -4,4 +4,4 @@ Author: Numixe & GiantRaven
 main: numixe.BackPacks.BackPacks
 commands:
         backpack:
-          description: Open Your Backpack
+          description: Get your backpack
