@@ -17,6 +17,7 @@ public class Bag {
 	
 	public static HashMap<String, Bag> data = new HashMap<String, Bag>();	// static allocation memory
 	public static final int SIZE = InventoryType.CHEST.getDefaultSize();
+	public static final ItemStack NULL_ITEM = new ItemStack(Material.AIR);
 	
 	Inventory inventory;
 
@@ -30,7 +31,7 @@ public class Bag {
 			
 			for (int i = 0; i < SIZE; i++) {
 				
-				inventory.addItem(new ItemStack(Material.AIR));
+				inventory.addItem(NULL_ITEM);
 			}
 			
 			plugin.saveConfig();
@@ -41,7 +42,13 @@ public class Bag {
 			@SuppressWarnings("unchecked")
 			List<ItemStack> items = (ArrayList<ItemStack>) plugin.getConfig().getList("backpacks." + player.getName());
 			
-			inventory.addItem(items.toArray(new ItemStack[items.size()]));
+			for (int i = 0; i < SIZE; i++) {
+				
+				if (items.get(i) == null)
+					inventory.addItem(NULL_ITEM);
+				else
+					inventory.addItem(items.get(i));
+			}
 		}
 	}
 	
@@ -57,7 +64,7 @@ public class Bag {
 	
 	public void storeInventory() { // store the inventory list
 		
-		plugin.getConfig().set("backpacks." + getHolder(), inventory.getContents());
+		plugin.getConfig().set("backpacks." + getHolder().getName(), inventory.getContents());
 		
 		plugin.saveConfig();
 		plugin.reloadConfig();
@@ -66,7 +73,13 @@ public class Bag {
 	public void loadInventory() { // 
 		
 		@SuppressWarnings("unchecked")
-		List<ItemStack> items = (ArrayList<ItemStack>) plugin.getConfig().getList("backpacks." + getHolder());
+		List<ItemStack> items = (ArrayList<ItemStack>) plugin.getConfig().getList("backpacks." + getHolder().getName());
+		
+		for (int i = 0; i < SIZE; i++) {
+			
+			if (items.get(i) == null)
+				items.set(i, NULL_ITEM);
+		}
 		
 		inventory.setContents(items.toArray(new ItemStack[items.size()]));
 	}
