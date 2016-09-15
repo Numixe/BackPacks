@@ -41,7 +41,7 @@ public class EventListener implements Listener {
 	
 	public static ItemStack genBackPack() {
 		
-		ItemStack bag = new ItemStack(Material.LEATHER_CHESTPLATE);
+		ItemStack bag = new ItemStack(Material.LEATHER);
 		
 		// configure backpack item here
 		
