@@ -29,26 +29,12 @@ public class Bag {
 			
 			plugin.getConfig().createSection("backpacks." + player.getName());
 			
-			for (int i = 0; i < SIZE; i++) {
-				
-				inventory.addItem(NULL_ITEM);
-			}
-			
 			plugin.saveConfig();
 			plugin.reloadConfig();
 			
 		} else {
 			
-			@SuppressWarnings("unchecked")
-			List<ItemStack> items = (ArrayList<ItemStack>) plugin.getConfig().getList("backpacks." + player.getName());
-			
-			for (int i = 0; i < SIZE; i++) {
-				
-				if (items.get(i) == null)
-					inventory.addItem(NULL_ITEM);
-				else
-					inventory.addItem(items.get(i));
-			}
+			loadInventory();
 		}
 	}
 	
@@ -64,24 +50,32 @@ public class Bag {
 	
 	public void storeInventory() { // store the inventory list
 		
-		plugin.getConfig().set("backpacks." + getHolder().getName(), inventory.getContents());
+		List<ItemStack> list = new ArrayList<ItemStack>();
+		
+		for (ItemStack item :  inventory.getContents()) {
+			
+			if (item != null)
+				list.add(item);
+		}
+		
+		plugin.getConfig().set("backpacks." + getHolder().getName(), list);
 		
 		plugin.saveConfig();
 		plugin.reloadConfig();
 	}
 	
-	public void loadInventory() { // 
+	public void loadInventory() { 	// load inventory from config
 		
 		@SuppressWarnings("unchecked")
 		List<ItemStack> items = (ArrayList<ItemStack>) plugin.getConfig().getList("backpacks." + getHolder().getName());
 		
-		for (int i = 0; i < SIZE; i++) {
-			
-			if (items.get(i) == null)
-				items.set(i, NULL_ITEM);
-		}
+		inventory.clear();
 		
-		inventory.setContents(items.toArray(new ItemStack[items.size()]));
+		for (ItemStack item : items) {
+			
+			if (item != null)
+				inventory.addItem(item);
+		}
 	}
 	
 	public static void loadPlayer(Player player) {	// load a player on join

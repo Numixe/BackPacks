@@ -22,6 +22,11 @@ public class BackPacks extends JavaPlugin implements Listener {
     	plugin = this;
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         Bukkit.getServer().getPluginManager().registerEvents(new EventListener(), this);
+        
+        for (Player p : Bukkit.getOnlinePlayers()) {
+        	
+        	Bag.loadPlayer(p);
+        }
     }
    
     public void onDisable() {
@@ -31,6 +36,8 @@ public class BackPacks extends JavaPlugin implements Listener {
     		System.out.println("Saving all inventories data");
     		entry.getValue().storeInventory();	
     	}
+  
+    	Bag.data.clear();	// clear hashmap
     }
     
     @Override
