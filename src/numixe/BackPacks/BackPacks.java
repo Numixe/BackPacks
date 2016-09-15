@@ -52,8 +52,10 @@ public class BackPacks extends JavaPlugin implements Listener {
         Player p = (Player) sender;
            
         if (cmd.getName().equalsIgnoreCase("backpack")) {
+        	if (p.hasPermission("EasyBag.get")) {
             p.sendMessage("§9BackPack> §aBackPack §7generato con successo!");
             Bag.getPack(p);
+        	}
         }
            
         return true;
