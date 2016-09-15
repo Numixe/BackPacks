@@ -43,7 +43,7 @@ public class EventListener implements Listener {
 		
 		ItemStack bag = new ItemStack(Material.LEATHER);
 		ItemMeta meta = bag.getItemMeta();
-        meta.setDisplayName("§2§lZaino");
+        meta.setDisplayName("Â§2Â§lZaino");
 		bag.setItemMeta(meta);
 		
 		// configure backpack item here
