@@ -23,7 +23,7 @@ public class Bag {
 
 	public Bag(Player player) {
 		
-		inventory = Bukkit.getServer().createInventory(player, InventoryType.CHEST, "Â§aÂ§lZaino di " + player.getName());
+		inventory = Bukkit.getServer().createInventory(player, InventoryType.CHEST, "§2§lZaino di " + player.getName());
 		
 		if (!plugin.getConfig().contains("backpacks." + player.getName())) {
 			
